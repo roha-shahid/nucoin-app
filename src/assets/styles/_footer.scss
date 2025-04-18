@@ -1,0 +1,29 @@
+
+.footer {
+    background-color: #000000;
+    color: #ffffff;
+
+    .nav-link {
+        color: #ffffff !important;
+    }
+
+    #newsletter1 {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: none;
+
+        &::placeholder {
+            color: #A7A3B5;
+            font-size: 14px;
+        }
+    }
+
+    .input-group {
+        background-color: #ffffff;
+        border-radius: 5px;
+    }
+
+    .social-link svg {
+        color: #ffffff;
+    }
+}
