@@ -15,8 +15,8 @@ const HeroSection = () => {
   ];
 
   const [clones, setClones] = useState([logos]);
-  useEffect(()=>{
-      setClones([...clones, logos]); // Add another clone of the logos array
+  useEffect(() => {
+    setClones([...clones, logos]); // Add another clone of the logos array
   }, [])
 
 
@@ -35,7 +35,8 @@ const HeroSection = () => {
               A decentralized and open internet, created by the community using a technology designed by Telegram.
             </div>
             <div className="d-flex justify-content-center text-center gap-3">
-              <button className='btn primary-button text-capitalize'>create wallet</button>
+              <button className='btn primary-button text-capitalize'><span>
+                create wallet</span></button>
               <button className='btn outline-button text-capitalize'>my wallet</button>
             </div>
           </div>

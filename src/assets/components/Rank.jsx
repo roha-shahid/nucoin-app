@@ -1,6 +1,8 @@
 import React from 'react'
-
+import { useInView } from 'react-intersection-observer'
 const Rank = () => {
+    const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.3 });
+
     return (
         <>
 
@@ -8,8 +10,8 @@ const Rank = () => {
                 <div className="row py-5 rank-section align-items-center">
                     <div className="col-md-6 pe-5">
                         <div className="about-section">
-                            <h2 className="gradient-text mb-4">
-                                <span>
+                            <h2 className={`text gradient-text mb-4 text-blocks ${inView ? 'in-view' : 'out-of-view'}`} ref={ref}>
+                                <span className='text'>
                                     Cryptocurrency
                                 </span> is the heart of TON
                             </h2>
@@ -18,7 +20,9 @@ const Rank = () => {
                                     Toncoin is TON's native cryptocurrency. It is used for network operations, transactions, games or collectibles built on TON.
                                 </p>
                                 <button className="primary-button text-uppercase">
-                                    get nucoin
+                                    <span>
+                                        get nucoin
+                                    </span>
                                 </button>
                             </div>
                         </div>

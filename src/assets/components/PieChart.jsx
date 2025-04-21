@@ -4,14 +4,14 @@ const PieChart = () => {
 
     const data = [
         ['Label', 'Value'],
+        ['Strategic Partners & Advisors', 34],
+        ['Strategic Partners & Advisors', 20],
+        ['Strategic Partners & Advisors', 12.5],
+        ['Strategic Partners & Advisors', 56],
         ['Strategic Partners & Advisors', 12.5],
         ['Strategic Partners & Advisors', 12.5],
-        ['Strategic Partners & Advisors', 12.5],
-        ['Strategic Partners & Advisors', 12.5],
-        ['Strategic Partners & Advisors', 12.5],
-        ['Strategic Partners & Advisors', 12.5],
-        ['Strategic Partners & Advisors', 12.5],
-        ['Strategic Partners & Advisors', 12.5],
+        ['Strategic Partners & Advisors', 11],
+        ['Strategic Partners & Advisors', 10],
     ];
 
     const colors = [
@@ -25,7 +25,7 @@ const PieChart = () => {
         '#C23AFF',
     ]
     const options = {
-        pieHole: 0.9,
+        pieHole: 0.5,
         pieSliceText: 'none', // hide % inside slices
         legend: 'none', // hide default legend
         backgroundColor: 'transparent',
@@ -68,41 +68,14 @@ const PieChart = () => {
                             data={data}
                             options={options}
                         />
-                        <div className="chart-border">
+                        {/* <div className="chart-border">
                             <div className='pie-head'>
                                 <div style={{ fontSize: '18px', fontWeight: 600 }}>Total supply</div>
                                 <div style={{ fontSize: '12px' }}>
                                     100,000,000,000 tokens
                                 </div>
                             </div>
-                        </div>
-                        {/* Side Labels */}
-                        {labels.map((label, index) => (
-                            <div
-                                key={index}
-                                style={{
-                                    position: 'absolute',
-                                    top: label.top,
-                                    left: label.left,
-                                    transform: 'translate(-50%, -50%)',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    fontSize: '12px',
-                                    fontWeight: 500,
-                                    color: '#333',
-                                    backgroundColor: '#fff',
-                                    padding: '4px 8px',
-                                    borderRadius: '6px',
-                                    boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
-                                    whiteSpace: 'nowrap',
-                                }}
-                            >
-                                <span>
-                                    12%
-                                </span>
-                                Strategic Partners & Advisors
-                            </div>
-                        ))}
+                        </div> */}
                     </div>
                     <div className="col-md-6 px-5">
                         {/* Label List */}

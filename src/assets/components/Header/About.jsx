@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Lottie from 'lottie-react';
-import animationData from '../../../assets/lottie-animations/about-animation.json'
+import animationData from '../../lottie-animations/about-animation.json'
 import { useInView } from 'react-intersection-observer';
 const About = () => {
     const lottieRef = useRef();
@@ -42,7 +42,9 @@ const About = () => {
                                     Lorem ipsum dolor sit amet consectetur. Massa donec eleifend nisl facilisis. Tempor est ante id malesuada ultricies commodo pharetra. Maecenas enim sed euismod lorem.
                                 </p>
                                 <button className="primary-button text-uppercase">
-                                    read more
+                                    <span>
+                                        read more
+                                    </span>
                                 </button>
                             </div>
                         </div>

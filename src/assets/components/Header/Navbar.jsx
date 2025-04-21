@@ -33,7 +33,9 @@ const Navbar = () => {
                             </li>
                         </ul>
                         <form>
-                            <button className="btn primary-button" type="submit">LOGIN</button>
+                            <button className="btn primary-button" type="submit">
+                                <span>LOGIN</span>
+                            </button>
                         </form>
                     </div>
                 </div>
