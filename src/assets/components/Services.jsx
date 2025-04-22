@@ -1,12 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import Lottie from 'lottie-react';
-import animationData from '../lottie-animations/Property 1=Default.json';
+import animationData from '../lottie-animations/Artboard.json';
 import { useInView } from 'react-intersection-observer';
 const Services = () => {
 
     const lottieRef = useRef();
-
-
     const { ref, inView } = useInView({
         triggerOnce: false,     // Set true if you want it to play only once
         threshold: 0.3,          // How much is visible before triggering
@@ -21,8 +19,8 @@ const Services = () => {
     }, [inView]);
     return (
         <>
-            <div className="container solution-section mt-5 p-5">
-                <div className="row benefits-section">
+            <div className="container solution-section mt-5 p-5" ref={ref}>
+                <div className={`row benefits-section benefits ${inView ? 'visible' : ''}`}>
                     <div className="col-md-6">
                         <span className="tab primary-tab text-uppercase">
                             Benefits
@@ -107,7 +105,7 @@ const Services = () => {
                     </div>
                 </div>
                 <div className="row services-section benefits-section mt-5 align-items-center">
-                    <div className="col-md-8">
+                    <div className={`col-md-8 our-services ${inView ? 'visible' : ''}`}>
                         <span className="tab primary-tab text-uppercase">
                             Our Services
                         </span>
@@ -139,7 +137,7 @@ const Services = () => {
                     </div>
                     <div className="row mt-5 ">
                         <div className="col-md-4">
-                            <div className="d-flex services align-items-center justify-content-between mt-3">
+                            <div className="d-flex services gap-3 align-items-center justify-content-between mt-3">
                                 <div className='image'>
                                     <img src="../Images/Block1.svg" alt="" />
                                 </div>
@@ -150,7 +148,7 @@ const Services = () => {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <div className="d-flex services align-items-center justify-content-between mt-3">
+                            <div className="d-flex services gap-3 align-items-center justify-content-between mt-3">
                                 <div className='image'>
                                     <img src="../Images/Block2.svg" alt="" />
                                 </div>
@@ -161,7 +159,7 @@ const Services = () => {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <div className="d-flex services align-items-center justify-content-between mt-3">
+                            <div className="d-flex services gap-3 align-items-center justify-content-between mt-3">
                                 <div className='image'>
                                     <img src="../Images/Block3.svg" alt="" />
                                 </div>

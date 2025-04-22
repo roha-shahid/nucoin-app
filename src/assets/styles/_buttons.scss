@@ -1,20 +1,48 @@
 .primary-button {
     position: relative;
     background-color: $primary-color !important;
-    color: #ffffff !important;
+    color: #fff !important;
+    border-color: transparent;
     padding: 8px 40px !important;
+    overflow: hidden;
     border-radius: 5px !important;
     font-weight: 600 !important;
-    transition: ease-out 0.5s;
-    -webkit-transition: ease-out 0.5s;
-    -moz-transition: ease-out 0.5s;
 
-    &:is(:hover, :focus) {
-        background-color: transparent !important;
-        color: $primary-color !important;
-        border: 1px solid $primary-color !important;
+    &::before,
+  &::after {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: all 0.3s;
+    content: "";
+  }
 
+  &::before {
+    width: 100%;
+    left: 0;
+    border-radius: 23px;
+    background-color: $primary-color;
+    z-index: -1;
+  }
+  &::after {
+    width: 0;
+    left: 50%;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    transform: translate(-50%, 0);
+    z-index: 1;
+  }
+  &:hover {
+    color: $primary-color;
+    &::before {
+      transform: scale(0, 1);
     }
+    &::after {
+      width: 100%;
+      border-color: $primary-color;
+      transition-delay: 0.2s;
+    }
+  }
 }
 
 .outline-button {
@@ -24,6 +52,28 @@
     border: 1px solid $primary-color !important;
     color: $primary-color !important;
     font-weight: 600 !important;
+    position: relative;
+    &::before {
+        width: 15px;
+        height: 1px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        transition: all 0.5s;
+        transition-delay: 0.1s;
+        background: $primary-color;
+        content: "";
+      }
+      &:hover {
+        background-color: $primary-color !important;
+        color: #fff !important;
+        &::before {
+          left: 100% !important;
+          transform: translate(-100%, -50%);
+          background-color: #fff;
+        }
+      }
 }
 
 .secondary-button {

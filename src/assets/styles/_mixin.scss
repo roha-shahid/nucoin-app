@@ -1,0 +1,49 @@
+@mixin fadeInUp($distance: 200px, $duration: 0.8s, $delay: 0.4s) {
+  opacity: 0;
+  transform: translateY($distance);
+  transition: opacity $duration ease, transform $duration ease;
+  transition-delay: $delay;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin borderEffect() {
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    transition: width 0.5s ease;
+    background: linear-gradient(116.98deg, #B71796 8.67%, #1565E3 52.91%, #0189F5 86.43%);
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+    transform-origin: right;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+    transform-origin: left;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  &:hover::before,
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+@mixin shadowEffect() {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}

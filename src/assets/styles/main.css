@@ -2,18 +2,45 @@
 .primary-button {
   position: relative;
   background-color: #29233B !important;
-  color: #ffffff !important;
+  color: #fff !important;
+  border-color: transparent;
   padding: 8px 40px !important;
+  overflow: hidden;
   border-radius: 5px !important;
   font-weight: 600 !important;
-  transition: ease-out 0.5s;
-  -webkit-transition: ease-out 0.5s;
-  -moz-transition: ease-out 0.5s;
 }
-.primary-button:is(:hover, :focus) {
-  background-color: transparent !important;
-  color: #29233B !important;
-  border: 1px solid #29233B !important;
+.primary-button::before, .primary-button::after {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: all 0.3s;
+  content: "";
+}
+.primary-button::before {
+  width: 100%;
+  left: 0;
+  border-radius: 23px;
+  background-color: #29233B;
+  z-index: -1;
+}
+.primary-button::after {
+  width: 0;
+  left: 50%;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  transform: translate(-50%, 0);
+  z-index: 1;
+}
+.primary-button:hover {
+  color: #29233B;
+}
+.primary-button:hover::before {
+  transform: scale(0, 1);
+}
+.primary-button:hover::after {
+  width: 100%;
+  border-color: #29233B;
+  transition-delay: 0.2s;
 }
 
 .outline-button {
@@ -23,6 +50,28 @@
   border: 1px solid #29233B !important;
   color: #29233B !important;
   font-weight: 600 !important;
+  position: relative;
+}
+.outline-button::before {
+  width: 15px;
+  height: 1px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  transition: all 0.5s;
+  transition-delay: 0.1s;
+  background: #29233B;
+  content: "";
+}
+.outline-button:hover {
+  background-color: #29233B !important;
+  color: #fff !important;
+}
+.outline-button:hover::before {
+  left: 100% !important;
+  transform: translate(-100%, -50%);
+  background-color: #fff;
 }
 
 .secondary-button {
@@ -69,11 +118,11 @@
 }
 .header-section .gradient-sphere {
   position: absolute;
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
   filter: blur(60px);
-  opacity: 0.15;
+  opacity: 0.2;
 }
 .header-section .sphere-1 {
   background: radial-gradient(circle, #B71796, transparent);
@@ -211,6 +260,21 @@
   font-size: 20px;
 }
 
+.about-section .lottie-animation {
+  cursor: pointer;
+  width: 450px;
+  height: auto;
+}
+.about-section .about {
+  opacity: 0;
+  transform: translateY(200px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.4s;
+}
+.about-section .about.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 .about-section h2 {
   font-weight: 700;
 }
@@ -219,6 +283,13 @@
   letter-spacing: 1.5px;
 }
 
+@media screen and (max-width: 992px) {
+  .about-section .lottie-animation {
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+  }
+}
 .footer {
   background-color: #000000;
   color: #ffffff;
@@ -277,6 +348,33 @@ body #root {
 .rank-section .inner-section {
   background: #F7F9FB;
   border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+.rank-section .inner-section::after, .rank-section .inner-section::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  transition: width 0.5s ease;
+  background: linear-gradient(116.98deg, #B71796 8.67%, #1565E3 52.91%, #0189F5 86.43%);
+}
+.rank-section .inner-section::after {
+  bottom: 0;
+  right: 0;
+  transform-origin: right;
+}
+.rank-section .inner-section::before {
+  top: 0;
+  left: 0;
+  transform-origin: left;
+}
+.rank-section .inner-section:hover {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}
+.rank-section .inner-section:hover::before, .rank-section .inner-section:hover::after {
+  width: 100%;
 }
 .rank-section .inner-section span {
   color: #728A96;
@@ -305,10 +403,6 @@ body #root {
 .graph-section .image {
   height: 35px;
 }
-.graph-section .image img {
-  width: 100%;
-  width: auto;
-}
 .graph-section .graph-text {
   color: #0088CC !important;
   font-size: 18px !important;
@@ -335,6 +429,9 @@ body #root {
   list-style: none;
   padding-left: 0;
   position: relative;
+  display: inline-flex;
+  right: -1rem;
+  top: -5rem;
 }
 .roadmap-section .roadmap .custom-list li {
   display: flex;
@@ -344,7 +441,8 @@ body #root {
   background-size: 20px 20px;
   text-align: center;
   padding-top: 30px;
-  position: absolute;
+  padding-inline: 40px;
+  position: relative;
   margin-bottom: 10px;
 }
 .roadmap-section .roadmap .custom-list li .dates {
@@ -355,28 +453,22 @@ body #root {
   font-size: 10px;
 }
 .roadmap-section .roadmap .custom-list li:first-child {
-  bottom: 1.8em;
-  left: -5.5em;
+  top: 1em;
 }
 .roadmap-section .roadmap .custom-list li:nth-child(2) {
-  bottom: -1.8em;
-  left: 3.5em;
+  top: 3em;
 }
 .roadmap-section .roadmap .custom-list li:nth-child(3) {
-  bottom: -2.9em;
-  left: 14.5em;
+  top: 2em;
 }
 .roadmap-section .roadmap .custom-list li:nth-child(4) {
-  bottom: -1.7em;
-  left: 24.5em;
+  bottom: 0.8em;
 }
 .roadmap-section .roadmap .custom-list li:nth-child(5) {
-  bottom: 1.5em;
-  left: 39em;
+  bottom: 2em;
 }
 .roadmap-section .roadmap .custom-list li:last-child {
-  bottom: 1.7em;
-  right: 0;
+  bottom: 0em;
 }
 
 .text-blocks.out-of-view {
@@ -489,12 +581,20 @@ body #root {
   padding: 12px;
   border-left-style: solid;
   background-color: #fff;
+  transition: transform 0.3s ease;
+  transform: scale(0.9);
 }
 .label-listing .list-item .percent-item {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 800;
 }
 .label-listing .list-item .percent-description {
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.label-listing .list-item:hover {
+  transform: scale(1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .labels div[aria-label="A chart."] svg g path:last-child {
@@ -504,14 +604,10 @@ body #root {
 .versions-section {
   color: #fff;
 }
-.versions-section .in-view .ver-in-view .tab,
-.versions-section .in-view .ver-in-view .description,
-.versions-section .in-view .ver-in-view .white-btn {
+.versions-section .in-view .ver-in-view .tab {
   animation: bulge 0.25s ease-in-out;
 }
-.versions-section .out-of-view .ver-in-view .tab,
-.versions-section .out-of-view .ver-in-view .description,
-.versions-section .out-of-view .ver-in-view .white-btn {
+.versions-section .out-of-view .ver-in-view .tab {
   transform: rotateX(90deg);
   transform-origin: bottom;
 }
@@ -631,31 +727,76 @@ body #root {
   background-image: none;
 }
 
+.services-section .our-services {
+  opacity: 0;
+  transform: translateY(1);
+  transition: opacity 1 ease, transform 1 ease;
+  transition-delay: 1s;
+}
+.services-section .our-services.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.benefits {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: 0.2s;
+}
+.benefits.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.center-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  pointer-events: none;
+}
+
 .services {
   background: #EBECFF;
   border-radius: 30px;
-  padding: 65px;
+  padding: 2px;
+  padding-inline: 65px;
   position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.services:hover {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}
+.services:hover .image {
+  transform: translateY(-5px);
 }
 .services .image {
-  width: 200px;
-  height: 300px;
-  position: absolute;
-  left: -1rem;
-  top: 0rem;
-}
-.services .image img {
+  position: relative;
   width: 100%;
   height: auto;
 }
+.services .image img {
+  width: 100%;
+}
 .services .text {
-  font-size: 16px;
-  padding-left: 8rem;
+  font-size: 13px;
 }
 .services .text a {
   color: #1F2258;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 22px;
   display: block;
   text-decoration: none;
@@ -701,5 +842,19 @@ body #root {
     left: 0 !important;
     bottom: 0 !important;
     top: 0 !important;
+  }
+}
+@media screen and (max-width: 920px) {
+  .rank-section .inner-section span {
+    font-size: 12px !important;
+  }
+  .rank-section .inner-section .rank-value {
+    font-size: 20px;
+  }
+  .roadmap-section .roadmap .custom-list li {
+    padding-inline: 10px;
+  }
+  .graph-section .image {
+    height: 20px;
   }
 }/*# sourceMappingURL=main.css.map */

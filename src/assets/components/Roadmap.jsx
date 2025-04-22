@@ -3,8 +3,8 @@ import React from 'react'
 const Roadmap = () => {
     return (
         <>
-            <div className="container-fluid roadmap-section">
-                <div className="container">
+            <div className="container-fluid">
+                <div className="container roadmap-section">
                     <div className="row">
                         <div className="col-md-12 text-center">
                             <h1 className='gradient-text'>

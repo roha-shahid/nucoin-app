@@ -29,63 +29,65 @@ const Rank = () => {
                     </div>
                     <div className="col-md-6">
                         <div className="inner-section px-5 py-4">
-                            <div className='row border-bottom pb-3'>
-                                <div className='col-md-6 d-flex gap-3 align-items-center'>
-                                    <img src="./Images/nu-coin.png" alt="" />
-                                    <div className='d-flex flex-column'>
-                                        <span>
-                                            Nucoin (NUC)
+                            <div>
+                                <div className='row border-bottom pb-3'>
+                                    <div className='col-md-6 d-flex gap-3 align-items-center'>
+                                        <img src="./Images/nu-coin.png" alt="" />
+                                        <div className='d-flex flex-column'>
+                                            <span>
+                                                Nucoin (NUC)
+                                            </span>
+                                            <div className='value'>
+                                                $1.40
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col-md-6 d-flex flex-column graph-section text-center'>
+                                        <div className="image my-4">
+                                            <img src="./Images/graph-vector.png" alt="" />
+                                        </div>
+                                        <span className='graph-text'>
+                                            +0.41% last 24h
                                         </span>
-                                        <div className='value'>
-                                            $1.40
+                                    </div>
+                                </div>
+                                <div className="row border-bottom py-4 mb-5">
+                                    <div className="col-md-4 border-end">
+                                        <div className='d-flex flex-column text-center'>
+                                            <span className='d-flex align-items-center gap-2 text-center justify-content-center'>
+                                                Rank
+                                                <img src="./Images/rank-vector.png" alt="" />
+                                            </span>
+                                            <div className='value rank-value'>
+                                                #14
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 border-end">
+                                        <div className='d-flex flex-column text-center'>
+                                            <span>
+                                                Market Cap
+                                            </span>
+                                            <div className='value rank-value'>
+                                                $4.82B
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className='d-flex flex-column text-center'>
+                                            <span>
+                                                Volume
+                                            </span>
+                                            <div className='value rank-value'>
+                                                $31.63M
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-md-6 d-flex flex-column graph-section text-center'>
-                                    <div className="image my-4">
-                                        <img src="./Images/graph-vector.png" alt="" />
+                                <div className="row">
+                                    <div className="col-md-12 text-center powered-text">
+                                        Powered by  <span> Nugenesis</span>
                                     </div>
-                                    <span className='graph-text'>
-                                        +0.41% last 24h
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="row border-bottom py-4 mb-5">
-                                <div className="col-md-4 border-end">
-                                    <div className='d-flex flex-column text-center'>
-                                        <span className='d-flex align-items-center gap-2 text-center justify-content-center'>
-                                            Rank
-                                            <img src="./Images/rank-vector.png" alt="" />
-                                        </span>
-                                        <div className='value rank-value'>
-                                            #14
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-4 border-end">
-                                    <div className='d-flex flex-column text-center'>
-                                        <span>
-                                            Market Cap
-                                        </span>
-                                        <div className='value rank-value'>
-                                            $4.82B
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-4">
-                                    <div className='d-flex flex-column text-center'>
-                                        <span>
-                                            Volume
-                                        </span>
-                                        <div className='value rank-value'>
-                                            $31.63M
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12 text-center powered-text">
-                                    Powered by  <span> Nugenesis</span>
                                 </div>
                             </div>
                         </div>

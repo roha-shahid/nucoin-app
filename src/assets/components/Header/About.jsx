@@ -5,17 +5,17 @@ import { useInView } from 'react-intersection-observer';
 const About = () => {
     const lottieRef = useRef();
 
-
+    const DivRef = useRef();
     const { ref, inView } = useInView({
         triggerOnce: false,     // Set true if you want it to play only once
-        threshold: 0.3,          // How much is visible before triggering
+        threshold: 0.3,
     });
 
     useEffect(() => {
         if (inView) {
             lottieRef.current?.play();
         } else {
-            lottieRef.current?.stop(); // or .pause() if you prefer
+            lottieRef.current?.stop(); 
         }
     }, [inView]);
     return (
@@ -24,13 +24,13 @@ const About = () => {
                 <div className="row py-5 align-items-center">
                     <div className="col-md-6">
                         <div>
-                            <div ref={ref} style={{ width: 400, height: 400, cursor: 'pointer' }}>
+                            <div ref={ref} className="lottie-animation">
                                 <Lottie lottieRef={lottieRef} animationData={animationData} loop={false} autoplay={false} />
                             </div>
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <div className="about-section">
+                        <div className={`about ${inView ? 'visible' : ''}`} ref={DivRef}>
                             <span className="primary-tab">
                                 BUSINESS SOLUTIONS
                             </span>

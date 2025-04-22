@@ -1,17 +1,16 @@
-import React from 'react'
-import Chart from 'react-google-charts'
+import { AgCharts } from 'ag-charts-react';
+import React, { useState } from 'react'
 const PieChart = () => {
 
     const data = [
-        ['Label', 'Value'],
-        ['Strategic Partners & Advisors', 34],
-        ['Strategic Partners & Advisors', 20],
-        ['Strategic Partners & Advisors', 12.5],
-        ['Strategic Partners & Advisors', 56],
-        ['Strategic Partners & Advisors', 12.5],
-        ['Strategic Partners & Advisors', 12.5],
-        ['Strategic Partners & Advisors', 11],
-        ['Strategic Partners & Advisors', 10],
+        { asset: 'Strategic Partners & Advisors', amount: 34 },
+        { asset: 'Strategic Partners & Advisors', amount: 20 },
+        { asset: 'Strategic Partners & Advisors', amount: 12.5 },
+        { asset: 'Strategic Partners & Advisors', amount: 56 },
+        { asset: 'Strategic Partners & Advisors', amount: 12.5 },
+        { asset: 'Strategic Partners & Advisors', amount: 12.5 },
+        { asset: 'Strategic Partners & Advisors', amount: 11 },
+        { asset: 'Strategic Partners & Advisors', amount: 10 },
     ];
 
     const colors = [
@@ -24,19 +23,57 @@ const PieChart = () => {
         '#2864FF',
         '#C23AFF',
     ]
-    const options = {
-        pieHole: 0.5,
-        pieSliceText: 'none', // hide % inside slices
-        legend: 'none', // hide default legend
-        backgroundColor: 'transparent',
-        chartArea: {
-            left: 0,
-            top: 0,
-            width: '100%',
-            height: '100%',
+
+    const [options] = useState({
+        background: {
+            fill: 'transparent',
+          },
+        data,
+        series: [
+            {
+                type: 'donut',
+                angleKey: 'amount',
+                calloutLabelKey: 'asset',
+                innerRadiusRatio: 0.6,
+                fills: colors,
+                strokeWidth: 0,
+                innerLabels: [
+                    {
+                        text: 'Total supply',
+                        fontWeight: 'bold',
+                        fontFamily: 'Roboto',
+                    },
+                    {
+                        text: '100,000',
+                        spacing: 4,
+                        fontSize: 20,
+                        color: 'black',
+                        fontFamily: 'Roboto',
+                    },
+                ],
+                innerCircle: {
+                    fill: '#fff',
+                },
+                calloutLabel: {
+                    enabled: true,
+                    fontSize: 14,
+                    fontWeight: '600',
+                    fontFamily: 'Roboto',
+                    color: '#333',
+                  },
+                  calloutLine: {
+                    strokeWidth: 1,
+                    colors: ['#ccc'],
+                  },
+            },
+        ],
+        legend: {
+            enabled: false,
         },
-        colors,
-    };
+        theme: {
+            fontFamily: 'Roboto',
+          },
+    });
     const labels = [
         { top: '0', left: '38%', color: '#882DCF' },
         { top: '25%', left: '50%', color: '#CD6CE7' },
@@ -49,7 +86,7 @@ const PieChart = () => {
     ];
     return (
         <>
-            <div className='container chart-section my-5' style={{ position: 'relative', margin: '0 auto' }}>
+            <div className='container chart-section my-5'>
                 <div className="row align-items-center">
                     <div className="col-md-12 text-center">
                         <h1 className='gradient-text text-capitalize'>
@@ -60,22 +97,9 @@ const PieChart = () => {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <Chart
-                            chartType="PieChart"
-                            width="100%"
-                            className="labels"
-                            height="500px"
-                            data={data}
-                            options={options}
-                        />
-                        {/* <div className="chart-border">
-                            <div className='pie-head'>
-                                <div style={{ fontSize: '18px', fontWeight: 600 }}>Total supply</div>
-                                <div style={{ fontSize: '12px' }}>
-                                    100,000,000,000 tokens
-                                </div>
-                            </div>
-                        </div> */}
+                        <div className='chart'>
+                            <AgCharts options={options} />
+                        </div>
                     </div>
                     <div className="col-md-6 px-5">
                         {/* Label List */}
