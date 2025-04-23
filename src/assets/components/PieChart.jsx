@@ -101,7 +101,7 @@ const PieChart = () => {
                             <AgCharts options={options} />
                         </div>
                     </div>
-                    <div className="col-md-6 px-5">
+                    <div className="col-md-6 listing">
                         {/* Label List */}
                         <div
                             className='label-listing mt-3 d-flex flex-column gap-4'

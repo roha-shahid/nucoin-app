@@ -7,7 +7,7 @@ const Services = () => {
     const lottieRef = useRef();
     const { ref, inView } = useInView({
         triggerOnce: false,     // Set true if you want it to play only once
-        threshold: 0.3,          // How much is visible before triggering
+        threshold: 0.1,          // How much is visible before triggering
     });
 
     useEffect(() => {
@@ -19,9 +19,9 @@ const Services = () => {
     }, [inView]);
     return (
         <>
-            <div className="container solution-section mt-5 p-5" ref={ref}>
+            <div className="container solution-section mt-5" ref={ref}>
                 <div className={`row benefits-section benefits ${inView ? 'visible' : ''}`}>
-                    <div className="col-md-6">
+                    <div className="col-md-6 fade-left">
                         <span className="tab primary-tab text-uppercase">
                             Benefits
                         </span>
@@ -39,7 +39,7 @@ const Services = () => {
                             </span>
                         </button>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 fade-right">
                         <div class="accordion" id="accordionPanel">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
@@ -129,8 +129,8 @@ const Services = () => {
                         </ul>
                     </div>
                     <div className="col-md-4">
-                        <div>
-                            <div ref={ref} style={{ width: 300, height: "auto", cursor: 'pointer' }}>
+                        <div className='service-player'>
+                            <div ref={ref} className="service-lottie">
                                 <Lottie lottieRef={lottieRef} animationData={animationData} loop={false} autoplay={false} />
                             </div>
                         </div>

@@ -1,49 +1,63 @@
 .primary-button {
-    position: relative;
-    background-color: $primary-color !important;
-    color: #fff !important;
-    border-color: transparent;
-    padding: 8px 40px !important;
-    overflow: hidden;
-    border-radius: 5px !important;
-    font-weight: 600 !important;
-
-    &::before,
+  position: relative;
+  background-color: $primary-color !important;
+  color: #fff !important;
+  border: none;
+  padding: 8px 40px !important;
+  overflow: hidden;
+  border-radius: 5px !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  z-index: 1;
+  
+  &::before,
   &::after {
-    height: 100%;
+    content: "";
     position: absolute;
     top: 0;
-    transition: all 0.3s;
-    content: "";
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
   }
 
   &::before {
     width: 100%;
     left: 0;
-    border-radius: 23px;
     background-color: $primary-color;
+    border-radius: 23px;
     z-index: -1;
   }
+
   &::after {
     width: 0;
     left: 50%;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
-    transform: translate(-50%, 0);
-    z-index: 1;
+    transform: translateX(-50%);
+    z-index: 2;
   }
+
   &:hover {
-    color: $primary-color;
+    color: $primary-color !important;
+    background-color: transparent !important;
+
     &::before {
-      transform: scale(0, 1);
+      transform: scaleX(0);
     }
+
     &::after {
       width: 100%;
       border-color: $primary-color;
       transition-delay: 0.2s;
     }
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.4);
+  }
 }
+
 
 .outline-button {
     background-color: transparent !important;

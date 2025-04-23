@@ -10,6 +10,48 @@
   }
 }
 
+
+@mixin fadeInRight() {
+  -webkit-animation: fadeInRight 1s ease 0.5s both;
+  animation: fadeInRight 1s ease 0.5s both;
+
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(50px, 0, 0);
+    transform: translate3d(50px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-50px, 0, 0);
+    transform: translate3d(-50px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+
+@mixin fadeInLeft() {
+  -webkit-animation: fadeInLeft 1s ease 0.5s both;
+  animation: fadeInLeft 1s ease 0.5s both;
+
+}
+
 @mixin borderEffect() {
 
   &::after,
@@ -45,5 +87,5 @@
 }
 
 @mixin shadowEffect() {
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
 }

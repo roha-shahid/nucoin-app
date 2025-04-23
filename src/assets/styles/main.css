@@ -1,26 +1,49 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 .primary-button {
   position: relative;
   background-color: #29233B !important;
   color: #fff !important;
-  border-color: transparent;
+  border: none;
   padding: 8px 40px !important;
   overflow: hidden;
   border-radius: 5px !important;
   font-weight: 600 !important;
+  cursor: pointer;
+  z-index: 1;
 }
 .primary-button::before, .primary-button::after {
-  height: 100%;
+  content: "";
   position: absolute;
   top: 0;
-  transition: all 0.3s;
-  content: "";
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
 }
 .primary-button::before {
   width: 100%;
   left: 0;
-  border-radius: 23px;
   background-color: #29233B;
+  border-radius: 23px;
   z-index: -1;
 }
 .primary-button::after {
@@ -28,19 +51,24 @@
   left: 50%;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
-  transform: translate(-50%, 0);
-  z-index: 1;
+  transform: translateX(-50%);
+  z-index: 2;
 }
 .primary-button:hover {
-  color: #29233B;
+  color: #29233B !important;
+  background-color: transparent !important;
 }
 .primary-button:hover::before {
-  transform: scale(0, 1);
+  transform: scaleX(0);
 }
 .primary-button:hover::after {
   width: 100%;
   border-color: #29233B;
   transition-delay: 0.2s;
+}
+.primary-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(41, 35, 59, 0.4);
 }
 
 .outline-button {
@@ -332,9 +360,33 @@ body #root {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
 }
 
+.aurora-text {
+  position: relative;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(116.98deg, #B71796 8.67%, #1565E3 52.91%, #0189F5 86.43%);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: auroraMove 8s ease infinite;
+}
+
+@keyframes auroraMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 .gradient-text {
   background: linear-gradient(116.98deg, #B71796 8.67%, #1565E3 52.91%, #0189F5 86.43%);
   -webkit-background-clip: text;
@@ -342,6 +394,9 @@ body #root {
   color: transparent;
 }
 
+.rank-section.in-view .text {
+  overflow: hidden;
+}
 .rank-section h2 span {
   font-size: 40px;
 }
@@ -390,6 +445,10 @@ body #root {
   font-weight: 600;
   font-size: 30px;
   line-height: 40px;
+}
+
+.service-player {
+  justify-self: center;
 }
 
 .powered-text {
@@ -454,56 +513,71 @@ body #root {
 }
 .roadmap-section .roadmap .custom-list li:first-child {
   top: 1em;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.4s;
+}
+.roadmap-section .roadmap .custom-list li:first-child.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .roadmap-section .roadmap .custom-list li:nth-child(2) {
   top: 3em;
+  opacity: 0;
+  transform: translateY(75px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.4s;
+}
+.roadmap-section .roadmap .custom-list li:nth-child(2).visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .roadmap-section .roadmap .custom-list li:nth-child(3) {
   top: 2em;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.4s;
+}
+.roadmap-section .roadmap .custom-list li:nth-child(3).visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .roadmap-section .roadmap .custom-list li:nth-child(4) {
   bottom: 0.8em;
+  opacity: 0;
+  transform: translateY(125px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.4s;
+}
+.roadmap-section .roadmap .custom-list li:nth-child(4).visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .roadmap-section .roadmap .custom-list li:nth-child(5) {
   bottom: 2em;
+  opacity: 0;
+  transform: translateY(150px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.4s;
+}
+.roadmap-section .roadmap .custom-list li:nth-child(5).visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .roadmap-section .roadmap .custom-list li:last-child {
   bottom: 0em;
+  opacity: 0;
+  transform: translateY(200px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: 0.4s;
+}
+.roadmap-section .roadmap .custom-list li:last-child.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.text-blocks.out-of-view {
-  visibility: hidden;
-}
-.text-blocks.in-view {
-  overflow: hidden;
-  position: relative;
-}
-.text-blocks.in-view .text {
-  transition-delay: 0.5s;
-}
-.text-blocks.in-view .text::after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(116.98deg, #B71796 8.67%, #1565E3 52.91%, #0189F5 86.43%);
-  animation: block 0.5s 0.25s both;
-}
-@keyframes block {
-  0% {
-    transform: translate(-110%, 0);
-  }
-  45%, 55% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(110%, 0);
-  }
-}
 .chart-section {
   background: url("/Images/abstract.png"), linear-gradient(180deg, rgba(241, 235, 255, 0.4) 0%, rgba(217, 239, 255, 0.4) 100%);
   -webkit-backdrop-filter: blur(20px);
@@ -662,6 +736,7 @@ body #root {
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   border-radius: 20px;
+  padding: 3rem !important;
 }
 .solution-section .benefits-section h1 {
   font-weight: 700;
@@ -738,15 +813,21 @@ body #root {
   transform: translateY(0);
 }
 
-.benefits {
-  opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  transition-delay: 0.2s;
+.listing {
+  padding-inline: 3rem !important;
 }
-.benefits.visible {
-  opacity: 1;
-  transform: translateY(0);
+
+.benefits .fade-left {
+  opacity: 0;
+}
+.benefits .fade-right {
+  opacity: 0;
+}
+.benefits.visible .fade-left {
+  animation: fadeInLeft 1s ease 0.5s both;
+}
+.benefits.visible .fade-right {
+  animation: fadeInRight 1s ease 0.5s both;
 }
 
 .chart-container {
@@ -770,7 +851,6 @@ body #root {
 .services {
   background: #EBECFF;
   border-radius: 30px;
-  padding: 2px;
   padding-inline: 65px;
   position: relative;
   cursor: pointer;
@@ -780,7 +860,7 @@ body #root {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
 }
 .services:hover .image {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
 }
 .services .image {
   position: relative;
@@ -833,17 +913,72 @@ body #root {
 }
 
 @media screen and (max-width: 768px) {
-  .roadmap .custom-list {
-    display: block !important;
+  .chart-section::after {
+    display: none;
   }
-  .roadmap .custom-list li {
-    display: block !important;
+  .roadmap-section {
+    background-position: center bottom;
+  }
+  .roadmap-section .roadmap {
+    padding-bottom: 20px;
+  }
+  .solution-section {
+    padding: 1rem !important;
+  }
+  .listing {
+    padding-inline: 1rem !important;
+  }
+  .roadmap-section .roadmap .custom-list {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 2rem 1rem;
+  }
+  .roadmap-section .roadmap .custom-list li {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
     position: relative !important;
     left: 0 !important;
     bottom: 0 !important;
     top: 0 !important;
+    width: 12rem;
+    text-align: left !important;
+    padding-left: 30px !important;
+    padding-top: 0;
+    background-position: top left;
+  }
+  .graph-section .image {
+    height: auto !important;
+  }
+  .rank-border {
+    border-right: none !important;
+  }
+  .services {
+    padding-block: 0 !important;
+    padding-inline: 30px !important;
+  }
+  .services .text {
+    font-size: 13px !important;
+  }
+  .services .text a {
+    font-size: 13px !important;
+    line-height: 20px !important;
   }
 }
+.service-lottie {
+  width: 300px;
+  height: auto;
+  cursor: pointer;
+}
+
+.rank-border {
+  border-right: 1px solid #dee2e6;
+}
+
 @media screen and (max-width: 920px) {
   .rank-section .inner-section span {
     font-size: 12px !important;
@@ -856,5 +991,94 @@ body #root {
   }
   .graph-section .image {
     height: 20px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .rank-section .inner-section span {
+    font-size: 14px;
+  }
+  .rank-section .inner-section .rank-value {
+    font-size: 25px;
+  }
+  .roadmap-section .roadmap .custom-list li {
+    padding-inline: 20px;
+  }
+  .services {
+    padding-inline: 40px;
+  }
+  .versions-section .v2-section,
+  .versions-section .v1-section {
+    padding: 32px;
+  }
+  .video-section .play-btn {
+    padding: 12px;
+  }
+  .video-section .play-btn svg {
+    width: 30px;
+    height: 30px;
+  }
+  .slider-container h3 {
+    font-size: 23px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .graph-section .graph-text {
+    font-size: 14px !important;
+  }
+  .graph-section .image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+  }
+  .image-container span {
+    font-size: 12px !important;
+  }
+  .rank-section .inner-section span {
+    font-size: 12px;
+  }
+  .rank-section .inner-section .rank-value {
+    font-size: 20px;
+  }
+  .rank-section .inner-section .value {
+    font-size: 18px;
+  }
+  .chart-section::after {
+    height: 170px;
+    width: 170px;
+  }
+  .chart-section::before {
+    height: 100px;
+    width: 100px;
+    bottom: -5%;
+  }
+  .solution-section .accordion .accordion-button {
+    font-size: 17px;
+  }
+  .solution-section .accordion .accordion-body {
+    font-size: 14px;
+  }
+  .primary-tab {
+    font-size: 13px;
+    padding: 6px 30px;
+  }
+  .solution-section li {
+    font-size: 17px;
+  }
+  .service-lottie {
+    width: 200px;
+  }
+  .services {
+    padding-inline: 35px;
+    padding-block: 10px;
+  }
+  .services .text {
+    font-size: 10px;
+  }
+  .services .text a {
+    font-size: 8px;
+    line-height: 10px;
   }
 }/*# sourceMappingURL=main.css.map */

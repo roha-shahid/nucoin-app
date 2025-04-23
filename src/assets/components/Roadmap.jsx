@@ -1,6 +1,46 @@
 import React from 'react'
+import { useInView } from 'react-intersection-observer';
 
 const Roadmap = () => {
+
+    const { ref, inView } = useInView({
+        triggerOnce: false,     
+        threshold: 0.1,
+    });
+
+    const Data = [
+        {
+            id: 1,
+            date: "Nov 23rd 2020",
+            description: "Commence stage 2 blockchain development(Completed)"
+        },
+        {
+            id: 2,
+            date: "Nov 23rd 2020",
+            description: "Commence justsocial.tech crytpo/social media platform (Completed)"
+        },
+        {
+            id: 3,
+            date: "Nov 23rd 2020",
+            description: "248M coin minted Just social live, Tech white pages live, (Completed"
+        },
+        {
+            id: 4,
+            date: "Nov 23rd 2020",
+            description: "NUCOIN miner service agreement for sale via justsocial.tech (Completed"
+        },
+        {
+            id: 5,
+            date: "Nov 23rd 2020",
+            description: "Staking and Mining protocols launched. and staking contracts issued through (Completed)"
+        },
+        {
+            id: 6,
+            date: "Nov 23rd 2020",
+            description: "Staking and Mining protocols launched. and staking contracts issued through (Completed)"
+        },
+
+    ]
     return (
         <>
             <div className="container-fluid">
@@ -15,8 +55,8 @@ const Roadmap = () => {
                             </p>
                         </div>
                         <div className="col-md-12 roadmap">
-                            <ul className='custom-list'>
-                                <li>
+                            <ul className={`custom-list`} ref={ref}>
+                                <li className={`${inView ? 'visible' : ''}`}>
                                     <div className="dates">
                                         Nov 23rd 2020
                                     </div>
@@ -24,7 +64,7 @@ const Roadmap = () => {
                                         Commence stage 2 blockchain development(Completed)
                                     </span>
                                 </li>
-                                <li>
+                                <li className={`${inView ? 'visible' : ''}`}>
                                     <div className="dates">
                                         Nov 23rd 2020
                                     </div>
@@ -32,7 +72,7 @@ const Roadmap = () => {
                                         Commence justsocial.tech crytpo/social media platform (Completed)
                                     </span>
                                 </li>
-                                <li>
+                                <li className={`${inView ? 'visible' : ''}`}>
                                     <div className="dates">
                                         Nov 23rd 2020
                                     </div>
@@ -42,7 +82,7 @@ const Roadmap = () => {
                                         (Completed
                                     </span>
                                 </li>
-                                <li>
+                                <li className={`${inView ? 'visible' : ''}`}>
                                     <div className="dates">
                                         Nov 23rd 2020
                                     </div>
@@ -52,7 +92,7 @@ const Roadmap = () => {
                                         justsocial.tech (Completed
                                     </span>
                                 </li>
-                                <li>
+                                <li className={`${inView ? 'visible' : ''}`}>
                                     <div className="dates">
                                         Nov 23rd 2020
                                     </div>
@@ -60,7 +100,7 @@ const Roadmap = () => {
                                         Staking and Mining protocols launched. and staking contracts issued through (Completed)
                                     </span>
                                 </li>
-                                <li>
+                                <li className={`${inView ? 'visible' : ''}`}>
                                     <div className="dates">
                                         Nov 23rd 2020
                                     </div>

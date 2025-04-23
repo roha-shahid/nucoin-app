@@ -7,11 +7,11 @@ const Rank = () => {
         <>
 
             <div className="container my-5">
-                <div className="row py-5 rank-section align-items-center">
-                    <div className="col-md-6 pe-5">
+                <div className={`row py-5 rank-section align-items-center ${inView ? 'in-view' : 'out-of-view'}`} ref={ref}>
+                    <div className="col-md-6 pe-5 fade-">
                         <div className="about-section">
-                            <h2 className={`text gradient-text mb-4 text-blocks ${inView ? 'in-view' : 'out-of-view'}`} ref={ref}>
-                                <span className='text'>
+                            <h2 className="text gradient-text mb-4 text-blocks" >
+                                <span className='text aurora-text'>
                                     Cryptocurrency
                                 </span> is the heart of TON
                             </h2>
@@ -31,7 +31,7 @@ const Rank = () => {
                         <div className="inner-section px-5 py-4">
                             <div>
                                 <div className='row border-bottom pb-3'>
-                                    <div className='col-md-6 d-flex gap-3 align-items-center'>
+                                    <div className='col-md-6 d-flex gap-3 align-items-center image-container'>
                                         <img src="./Images/nu-coin.png" alt="" />
                                         <div className='d-flex flex-column'>
                                             <span>
@@ -51,8 +51,8 @@ const Rank = () => {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="row border-bottom py-4 mb-5">
-                                    <div className="col-md-4 border-end">
+                                <div className="row border-bottom py-4 mb-5 align-items-center">
+                                    <div className="col-md-4 rank-border">
                                         <div className='d-flex flex-column text-center'>
                                             <span className='d-flex align-items-center gap-2 text-center justify-content-center'>
                                                 Rank
@@ -63,7 +63,7 @@ const Rank = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-4 border-end">
+                                    <div className="col-md-4 rank-border">
                                         <div className='d-flex flex-column text-center'>
                                             <span>
                                                 Market Cap
