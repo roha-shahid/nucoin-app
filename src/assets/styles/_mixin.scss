@@ -61,7 +61,7 @@
     width: 0;
     height: 1px;
     transition: width 0.5s ease;
-    background: linear-gradient(116.98deg, #B71796 8.67%, #1565E3 52.91%, #0189F5 86.43%);
+    background: var(--gradient-color);
   }
 
   &::after {

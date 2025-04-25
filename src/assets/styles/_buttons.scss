@@ -1,7 +1,7 @@
 .primary-button {
   position: relative;
-  background-color: $primary-color !important;
-  color: #fff !important;
+  background-color: var(--text-color) !important;
+  color: var(--bg-color) !important;
   border: none;
   padding: 8px 40px !important;
   overflow: hidden;
@@ -23,7 +23,7 @@
   &::before {
     width: 100%;
     left: 0;
-    background-color: $primary-color;
+    background-color: var(--text-color);
     border-radius: 23px;
     z-index: -1;
   }
@@ -38,7 +38,7 @@
   }
 
   &:hover {
-    color: $primary-color !important;
+    color: var(--text-color) !important;
     background-color: transparent !important;
 
     &::before {
@@ -47,7 +47,7 @@
 
     &::after {
       width: 100%;
-      border-color: $primary-color;
+      border-color: var(--text-color);
       transition-delay: 0.2s;
     }
   }
@@ -63,8 +63,8 @@
     background-color: transparent !important;
     padding: 4px 40px !important;
     border-radius: 5px !important;
-    border: 1px solid $primary-color !important;
-    color: $primary-color !important;
+    border: 1px solid var(--text-color) !important;
+    color: var(--text-color) !important;
     font-weight: 600 !important;
     position: relative;
     &::before {
@@ -76,16 +76,16 @@
         transform: translate(0, -50%);
         transition: all 0.5s;
         transition-delay: 0.1s;
-        background: $primary-color;
+        background: var(--text-color);
         content: "";
       }
       &:hover {
-        background-color: $primary-color !important;
-        color: #fff !important;
+        background-color: var(--text-color) !important;
+        color: var(--bg-color) !important;
         &::before {
           left: 100% !important;
           transform: translate(-100%, -50%);
-          background-color: #fff;
+          background-color: var(--bg-color);
         }
       }
 }
@@ -101,12 +101,13 @@
 }
 
 .primary-tab {
-    background: #E3F8FA;
-    color: #00B0C6;
+    background: var(--tab-bg);
+    color: var(--tab-color);
     text-transform: uppercase;
     font-weight: 400;
     font-size: 16px;
-    border-radius: 7px;
+    border-radius: var(--tab-border-radius);
+    border: var(--tab-border-width) solid var(--tab-border);
     padding: 8px 40px;
     position: relative;
     display: inline-block;

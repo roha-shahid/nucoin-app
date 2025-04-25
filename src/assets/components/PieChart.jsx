@@ -1,17 +1,7 @@
-import { AgCharts } from 'ag-charts-react';
 import React, { useState } from 'react'
+import ReactApexChart from 'react-apexcharts';
 const PieChart = () => {
 
-    const data = [
-        { asset: 'Strategic Partners & Advisors', amount: 34 },
-        { asset: 'Strategic Partners & Advisors', amount: 20 },
-        { asset: 'Strategic Partners & Advisors', amount: 12.5 },
-        { asset: 'Strategic Partners & Advisors', amount: 56 },
-        { asset: 'Strategic Partners & Advisors', amount: 12.5 },
-        { asset: 'Strategic Partners & Advisors', amount: 12.5 },
-        { asset: 'Strategic Partners & Advisors', amount: 11 },
-        { asset: 'Strategic Partners & Advisors', amount: 10 },
-    ];
 
     const colors = [
         '#882DCF',
@@ -23,67 +13,119 @@ const PieChart = () => {
         '#2864FF',
         '#C23AFF',
     ]
-
-    const [options] = useState({
-        background: {
-            fill: 'transparent',
-          },
-        data,
-        series: [
-            {
+    const [state, setState] = useState({
+        series: [34, 10, 30, 26],
+        options: {
+            chart: {
                 type: 'donut',
-                angleKey: 'amount',
-                calloutLabelKey: 'asset',
-                innerRadiusRatio: 0.6,
-                fills: colors,
-                strokeWidth: 0,
-                innerLabels: [
-                    {
-                        text: 'Total supply',
-                        fontWeight: 'bold',
-                        fontFamily: 'Roboto',
-                    },
-                    {
-                        text: '100,000',
-                        spacing: 4,
-                        fontSize: 20,
-                        color: 'black',
-                        fontFamily: 'Roboto',
-                    },
-                ],
-                innerCircle: {
-                    fill: '#fff',
-                },
-                calloutLabel: {
-                    enabled: true,
-                    fontSize: 14,
-                    fontWeight: '600',
-                    fontFamily: 'Roboto',
-                    color: '#333',
-                  },
-                  calloutLine: {
-                    strokeWidth: 1,
-                    colors: ['#ccc'],
-                  },
             },
-        ],
-        legend: {
-            enabled: false,
+            colors: colors,
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: '70%',
+                        background: '#fff', // Simulate `innerCircle.fill`
+                        labels: {
+                            show: true,
+                            name: {
+                                show: true,
+                                fontSize: '14px',
+                                fontWeight: 700,
+                                fontFamily: 'Roboto',
+                                offsetY: -10,
+                                formatter: () => 'Total supply',
+                            },
+                            value: {
+                                show: true,
+                                showAlways: true,
+                                fontSize: '20px',
+                                fontWeight: 500,
+                                fontFamily: 'Roboto',
+                                offsetY: 10,
+                                color: 'black',
+                                formatter: () => '100,000',
+                            },
+                            total: {
+                                show: false
+                            },
+                        },
+                    },
+                },
+            },
+            responsive: [
+                {
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 400,
+                        },
+                        legend: {
+                            position: 'bottom',
+                        },
+                    },
+                },
+            ],
         },
-        theme: {
-            fontFamily: 'Roboto',
-          },
     });
-    const labels = [
-        { top: '0', left: '38%', color: '#882DCF' },
-        { top: '25%', left: '50%', color: '#CD6CE7' },
-        { top: '35%', left: '90%', color: '#7C75FF' },
-        { top: '60%', left: '85%', color: '#EE4492' },
-        { top: '75%', left: '65%', color: '#AEE7FF' },
-        { top: '82%', left: '35%', color: '#6998FF' },
-        { top: '68%', left: '10%', color: '#2864FF' },
-        { top: '30%', left: '5%', color: '#C23AFF' },
-    ];
+
+    // const data = [
+    //     { asset: 'Strategic Partners & Advisors', amount: 34 },
+    //     { asset: 'Strategic Partners & Advisors', amount: 20 },
+    //     { asset: 'Strategic Partners & Advisors', amount: 12.5 },
+    //     { asset: 'Strategic Partners & Advisors', amount: 56 },
+    // ];
+
+    // const [options] = useState({
+    //     background: {
+    //         fill: 'transparent',
+    //       },
+    //     data,
+    //     series: [
+    //         {
+    //             type: 'donut',
+    //             angleKey: 'amount',
+    //             calloutLabelKey: 'asset',
+    //             width: 800,
+    //             innerRadiusRatio: 0.7,
+    //             fills: colors,
+    //             strokeWidth: 0,
+    //             innerLabels: [
+    //                 {
+    //                     text: 'Total supply',
+    //                     fontWeight: 'bold',
+    //                     fontFamily: 'Roboto',
+    //                 },
+    //                 {
+    //                     text: '100,000',
+    //                     spacing: 4,
+    //                     fontSize: 20,
+    //                     color: 'black',
+    //                     fontFamily: 'Roboto',
+    //                 },
+    //             ],
+    //             innerCircle: {
+    //                 fill: '#fff',
+    //             },
+    //             calloutLabel: {
+    //                 enabled: true,
+    //                 fontSize: 10,
+    //                 fontWeight: '600',
+    //                 fontFamily: 'Roboto',
+    //                 color: '#333',
+    //               },
+    //               calloutLine: {
+    //                 strokeWidth: 1,
+    //                 colors: ['#ccc'],
+    //               },
+    //         },
+    //     ],
+    //     legend: {
+    //         enabled: false,
+    //     },
+    //     theme: {
+    //         fontFamily: 'Roboto',
+    //       },
+    // });
     return (
         <>
             <div className='container chart-section my-5'>
@@ -97,8 +139,15 @@ const PieChart = () => {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <div className='chart'>
-                            <AgCharts options={options} />
+                        <div>
+                            <div id="chart">
+                                <ReactApexChart
+                                    options={state.options}
+                                    series={state.series}
+                                    type="donut"
+                                    width="100%"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="col-md-6 listing">

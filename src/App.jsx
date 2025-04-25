@@ -14,7 +14,6 @@ import Services from './assets/components/Services';
 import Video from './assets/components/Video';
 
 function App() {
-
   return (
     <>
      <Header />
@@ -24,6 +23,7 @@ function App() {
      <PieChart />
      <Services />
      <Versions />
+     <Features/>
      <Footer />
     </>
   )
