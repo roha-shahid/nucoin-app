@@ -14,7 +14,7 @@ const PieChart = () => {
         '#C23AFF',
     ]
     const [state, setState] = useState({
-        series: [34, 10, 30, 26],
+        series: [3400, 1000, 3000, 2600],
         options: {
             chart: {
                 type: 'donut',
@@ -46,7 +46,8 @@ const PieChart = () => {
                                 formatter: () => '100,000',
                             },
                             total: {
-                                show: false
+                                show: true,
+                                showAlways: true
                             },
                         },
                     },
@@ -75,61 +76,10 @@ const PieChart = () => {
     //     { asset: 'Strategic Partners & Advisors', amount: 56 },
     // ];
 
-    // const [options] = useState({
-    //     background: {
-    //         fill: 'transparent',
-    //       },
-    //     data,
-    //     series: [
-    //         {
-    //             type: 'donut',
-    //             angleKey: 'amount',
-    //             calloutLabelKey: 'asset',
-    //             width: 800,
-    //             innerRadiusRatio: 0.7,
-    //             fills: colors,
-    //             strokeWidth: 0,
-    //             innerLabels: [
-    //                 {
-    //                     text: 'Total supply',
-    //                     fontWeight: 'bold',
-    //                     fontFamily: 'Roboto',
-    //                 },
-    //                 {
-    //                     text: '100,000',
-    //                     spacing: 4,
-    //                     fontSize: 20,
-    //                     color: 'black',
-    //                     fontFamily: 'Roboto',
-    //                 },
-    //             ],
-    //             innerCircle: {
-    //                 fill: '#fff',
-    //             },
-    //             calloutLabel: {
-    //                 enabled: true,
-    //                 fontSize: 10,
-    //                 fontWeight: '600',
-    //                 fontFamily: 'Roboto',
-    //                 color: '#333',
-    //               },
-    //               calloutLine: {
-    //                 strokeWidth: 1,
-    //                 colors: ['#ccc'],
-    //               },
-    //         },
-    //     ],
-    //     legend: {
-    //         enabled: false,
-    //     },
-    //     theme: {
-    //         fontFamily: 'Roboto',
-    //       },
-    // });
     return (
         <>
             <div className='container chart-section my-5'>
-                <div className="row align-items-center">
+                <div className="row align-items-center inner-content">
                     <div className="col-md-12 text-center">
                         <h1 className='gradient-text text-capitalize'>
                             The Real Value Of NUC
